@@ -1,5 +1,7 @@
 OTP:
-  generate_new: False
+  first_address: "0x1FFF7000"
+  second_address: "0x1FFF7010"
+  generate_new: True
   version: 12
   firmware: 7
   body: 9
@@ -74,14 +76,24 @@ OTP:
     - Glint
     - Drift
     - Zoomer
+  flash: True
 
 FUS:
   address: "0x080EC000"
-  from_version: 1.2.0
+  flash: True
 
 radio:
   address: "0x080D7000"
+  flash: True
 
 CKS:
-  generate_new: False
+  generate_new: True
+  flash: True
+
+bootloader:
+  address: "0x08000000"
+  flash: True
+
+firmware:
+  address: "0x08008000"
   flash: True

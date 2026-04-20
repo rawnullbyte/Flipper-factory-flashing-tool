@@ -1,3 +1,7 @@
+# Auto-generated assets
+assets/cks
+assets/otp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

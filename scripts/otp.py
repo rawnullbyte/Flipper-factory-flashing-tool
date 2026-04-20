@@ -159,14 +159,26 @@ class Main(App):
         self.logger.info("Generating OTP")
         self._processFirstArgs()
         self._processSecondArgs()
-        with open(f"{self.args.file}_first.bin", "wb") as file:
-            file.write(self._packFirst())
-        with open(f"{self.args.file}_second.bin", "wb") as file:
-            file.write(self._packSecond())
-        self.logger.info(
-            f"Generated files: {self.args.file}_first.bin and {self.args.file}_second.bin"
-        )
 
+        path = self.args.file.rstrip("/\\")
+
+        if (
+            path.endswith(("/", "\\"))
+            or os.path.isdir(path)
+            or not os.path.basename(path)
+        ):
+            first_file = os.path.join(path, "first.bin")
+            second_file = os.path.join(path, "second.bin")
+        else:
+            first_file = f"{path}_first.bin"
+            second_file = f"{path}_second.bin"
+
+        with open(first_file, "wb") as file:
+            file.write(self._packFirst())
+        with open(second_file, "wb") as file:
+            file.write(self._packSecond())
+
+        self.logger.info(f"Generated files: {first_file} and {second_file}")
         return 0
 
     def flash_first(self):
