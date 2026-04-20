@@ -80,6 +80,7 @@ OTP:
 
 FUS:
   address: "0x080EC000"
+  from_version: 1.2.0
   flash: True
 
 radio:
